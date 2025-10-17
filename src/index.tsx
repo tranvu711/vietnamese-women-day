@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Sparkles, Music2, Gift, Share2, Printer, Settings, PartyPopper } from "lucide-react";
+import {Heart, Sparkles, Music2, Gift, Share2, Printer, Settings, PartyPopper, View} from "lucide-react";
 import "./index.css"; // Import Tailwind CSS
 
 // Custom background component with animation
@@ -109,8 +109,8 @@ const DEFAULTS = {
     sender: "From Teko-ers With 💙",
     mainMessage: `Gửi những đồng nghiệp nữ đáng mến,
         
-Ngày 20 tháng 10 lại đến – dịp để chúng ta trân trọng và tôn vinh những người phụ nữ tuyệt vời quanh mình.
-Cảm ơn chị em Teko đã luôn mạnh mẽ, dịu dàng và lan tỏa nguồn năng lượng tích cực mỗi ngày, khiến nơi làm việc trở nên ấm áp và đầy cảm hứng.
+Ngày 20 tháng 10 lại đến, không chỉ là dịp cho đại gia dình Teko mà là tất cả mọi người trân trọng và tôn vinh những người phụ nữ tuyệt vời quanh mình.
+Nhưng hơn tất cả, cảm ơn chị em Teko đã luôn mạnh mẽ, dịu dàng và lan tỏa nguồn năng lượng tích cực mỗi ngày, khiến nơi làm việc trở nên ấm áp và đầy cảm hứng.
 Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về chính mình – vì chỉ cần như vậy thôi, thế giới này đã tươi đẹp hơn rất nhiều.
 
 From Teko-ers with love!
@@ -502,7 +502,7 @@ export default function WomensDay20_10() {
                 <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
                     <div className={`flex items-center gap-2 ${inGallery ? "text-white mix-blend-difference" : theme.text}`}>
                         <Sparkles className="w-6 h-6" />
-                        <span className="font-semibold tracking-wide">Vietnamese Women's Day - 20/10</span>
+                        <span className="font-semibold tracking-wide">Vietnamese Women's Day</span>
                     </div>
                     <div className="flex items-center gap-2">
                         {/* Navigation dots */}
@@ -550,19 +550,19 @@ export default function WomensDay20_10() {
                     </button>
                 )}
             </div>
+            <div className={"mobile-text-show rounded-xl shadow-[0_0_80px_-10px_rgba(244,63,94,0.45)]"} style={{
+                background: "#fff",
+                padding: "8px 16px",
+                margin: "18px 18px 0px 18px",
+                textAlign: "center",
+            }}>
+                Vui lòng sử dụng máy tính để có trải nghiệm tốt nhất!
+            </div>
 
             {/* Hero / Wish Section - Full Screen */}
             <main ref={mainRef} className="relative z-10 min-h-screen flex items-center justify-center snap-start snap-always" id="greeting-section">
                 <div className="w-full max-w-5xl mx-auto px-4" >
-                    <section className={`mt-6 md:mt-0 p-6 md:p-10 rounded-3xl  ${theme.glow}`}
-                             style={{
-                                 backgroundImage: "url('https://tranvu.info/20.10/bg04.jpg?')",
-                                 backgroundSize: "cover",
-                                 backgroundPosition: "center",
-                                 backgroundRepeat: "no-repeat",
-                                 backgroundColor: "rgba(255, 255, 255, 0.6)",
-                             }}
-                    >
+                    <section className={`mt-6 md:mt-0 p-6 md:p-10 rounded-3xl bg-letter ${theme.glow}`}>
                         <div className="relative">
                             {/*<Ribbon text="Happy Vietnamese Women's Day" />*/}
                             <div className="flex flex-col items-center text-center">
@@ -652,13 +652,18 @@ export default function WomensDay20_10() {
                                          flex items-center justify-center
                                          overflow-hidden">
                             {/* Enhanced decorative elements with animation */}
-                            <div className="absolute -inset-1 rounded-full blur-md opacity-70 border-1 border-white/30 animate-pulse-slow"
+                            <div className="absolute -inset-1 rounded-full blur-md opacity-70 border-1"
                                  style={{
-                                     // background: "#232d39"
-                                     background:"blue"
+                                     background: "#fff",
+                                     border: "1px solid rgb(59, 89, 128)",
                                  }}
                             ></div>
-                            <img className={"absolute"} src={"https://career.teko.vn/images/Teko-Logo-solution-light.png"}/>
+                            <div className="absolute -inset-1 rounded-full"
+                                 style={{
+                                     border: "6px solid rgb(59, 89, 128, 0.4)"
+                                 }}
+                            ></div>
+                            <img className={"absolute"} src={"https://career.teko.vn/images/Teko-Logo-solution-dark.png"}/>
 
                         </div>
 
@@ -730,7 +735,7 @@ export default function WomensDay20_10() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{
-                                        duration: 0.6,
+                                        duration: 0.1,
                                         delay: i * 0.1 % 0.5,
                                     }}
                                     whileHover={{
@@ -780,15 +785,15 @@ export default function WomensDay20_10() {
 
                                         {/* Enhanced prismatic light effect */}
                                         <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/10 opacity-0
-                                                      group-hover:opacity-70 transition-all duration-300 rounded-full"></div>
+                                                      group-hover:opacity-70 transition-all duration-50 rounded-full"></div>
 
                                         {/* Enhanced overlay with hover effect */}
                                         <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-90
                                                       bg-gradient-radial from-transparent to-black/70
-                                                      flex items-center justify-center transition-all duration-300">
+                                                      flex items-center justify-center transition-all duration-50">
                                             {/* Enhanced play button animation */}
                                             <div className="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg
-                                                          scale-0 group-hover:scale-100 transition-transform duration-300
+                                                          scale-0 group-hover:scale-100 transition-transform duration-50
                                                           flex items-center justify-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                                      className="w-4 h-4 text-white">
@@ -809,13 +814,13 @@ export default function WomensDay20_10() {
                                                 src={src}
                                                 alt={`Ảnh ${i + 1}`}
                                                 className="w-full h-full object-cover filter blur-sm brightness-90
-                                                       group-hover:blur-0 group-hover:brightness-100 transition-all duration-300"
+                                                       group-hover:blur-0 group-hover:brightness-100 transition-all duration-50"
                                                 loading="lazy"
                                             />
 
                                             {/* Enhanced bottom gradient vignette */}
                                             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/20 to-transparent opacity-0
-                                                         group-hover:opacity-80 transition-all duration-300"></div>
+                                                         group-hover:opacity-80 transition-all duration-50"></div>
                                         </div>
                                     </div>
                                 </motion.div>
