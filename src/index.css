@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import font nghệ thuật */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Parisienne&family=Playfair+Display:ital@0;1&family=Montserrat:wght@400;500;600&family=Quicksand:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital@1&display=swap');
+
+/* Letter styling - enhanced */
+.letter-paper {
+  background-color: #fffaf0;
+  background-image:
+    /* Vertical fold line */
+    linear-gradient(90deg, rgba(0,0,0,0) 49.9%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.02) 50.2%, rgba(0,0,0,0) 50.9%),
+    /* Horizontal fold line */
+    linear-gradient(180deg, rgba(0,0,0,0) 49.9%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.02) 50.2%, rgba(0,0,0,0) 50.9%),
+    /* Paper texture */
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23b3a6a6' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  position: relative;
+  box-shadow:
+    0 1px 5px rgba(0,0,0,0.15),
+    0 10px 30px -5px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+  transform-style: preserve-3d;
+}
+
+/* Create real paper effect with subtle shading */
+.letter-paper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.05) 100%);
+}
+
+.font-wish{
+  font-family: "Edu QLD Hand", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/* Stamps and postmarks */
+.letter-paper::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='5' y='5' width='90' height='90' fill='none' stroke='%23000' stroke-width='2' stroke-dasharray='4 2'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23000' stroke-width='2'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-family='serif' font-size='14' fill='%23000'%3E20/10%3C/text%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.letter-wrapper {
+  position: relative;
+  transform: rotate(0deg);
+  transform-origin: center center;
+  transition: transform 0.5s ease;
+}
+
+.letter-wrapper:hover {
+  transform: rotate(0.5deg) translateY(-5px);
+}
+
+.letter-content {
+  /*font-family: 'Dancing Script', cursive;*/
+  font-family: 'Great Vibes', cursive;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+  transform: translateZ(20px);
+  padding: 1.5rem;
+  padding-right: 7.5rem;
+  color: #473a33;
+    height: 438px;
+}
+
+.letter-header {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8em;
+  color: #d24f79;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.letter-header::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d24f79, transparent);
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.letter-signature {
+  font-family: 'Parisienne', cursive;
+  font-size: 1.5em;
+  margin-top: 2rem;
+  text-align: right;
+  padding-right: 2rem;
+  color: #d24f79;
+  position: relative;
+}
+
+.letter-decoration {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.letter-decoration-top {
+  top: 3rem;
+  left: 2rem;
+  width: 25%;
+}
+
+.letter-decoration-bottom {
+  bottom: 3rem;
+  right: 2rem;
+  width: 25%;
+}
+
+.vietnamese-text {
+  /*font-family: 'Be Vietnam Pro', 'Quicksand', sans-serif;*/
+  /*font-weight: 500;*/
+  /*letter-spacing: 0.01em;*/
+  /*line-height: 1.8;*/
+}
+
+/* Animation for text message */
+.message-text-animation {
+  transition: all 0.3s ease;
+}
+
+.message-text-animation:hover {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
