@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { createRoot } from "react-dom/client";
-import { motion, AnimatePresence } from "framer-motion";
+import React, {useEffect, useRef, useState} from "react";
+import {createRoot} from "react-dom/client";
+import {motion, AnimatePresence} from "framer-motion";
 import {Heart, Sparkles, Music2, Gift, Share2, Printer, Settings, PartyPopper, View} from "lucide-react";
 import "./index.css"; // Import Tailwind CSS
 
@@ -40,9 +40,15 @@ const AnimatedBackground = () => {
             />
             <style jsx>{`
                 @keyframes float {
-                    0% { transform: translateY(0px); }
-                    50% { transform: translateY(-20px); }
-                    100% { transform: translateY(0px); }
+                    0% {
+                        transform: translateY(0px);
+                    }
+                    50% {
+                        transform: translateY(-20px);
+                    }
+                    100% {
+                        transform: translateY(0px);
+                    }
                 }
             `}</style>
         </div>
@@ -106,17 +112,15 @@ type ThemeKey = keyof typeof THEME_MAP;
 const DEFAULTS = {
     title: "Chúc mừng 20/10",
     recipient: "Chị Em Phụ Nữ Việt Nam",
-    sender: "From Teko-ers With 💙",
-    mainMessage: `Gửi những đồng nghiệp nữ đáng mến,
+    sender: "From teko-ers with love!",
+    mainMessage: `Gửi những đồng nghiệp nữ tại Teko đáng mến,
         
-Ngày 20 tháng 10 lại đến, không chỉ là dịp cho đại gia dình Teko mà là tất cả mọi người trân trọng và tôn vinh những người phụ nữ tuyệt vời quanh mình.
-Nhưng hơn tất cả, cảm ơn chị em Teko đã luôn mạnh mẽ, dịu dàng và lan tỏa nguồn năng lượng tích cực mỗi ngày, khiến nơi làm việc trở nên ấm áp và đầy cảm hứng.
+Ngày 20/10 lại đến, không chỉ là dịp cho đại gia đình Teko mà là tất cả mọi người trân trọng và tôn vinh những người phụ nữ tuyệt vời quanh mình.
+Nhưng hơn tất cả, cảm ơn chị em Teko đã luôn mạnh mẽ, dịu dàng và lan tỏa nguồn năng lượng tích cực mỗi ngày, để nơi làm việc trở nên ấm áp và đầy cảm hứng.
 Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về chính mình – vì chỉ cần như vậy thôi, thế giới này đã tươi đẹp hơn rất nhiều.
-
-From Teko-ers with love!
 `,
     theme: "rose" as ThemeKey,
-    accentEmojis: ["🌸", "💐", "✨", "💖", "🎉"],
+    accentEmojis: ["🌸", "💐", "🌹", "💖", "✨", "🎉"],
     musicUrl: "https://tranvu.info/20.10/Em-Trong-Mat-Toi-Anh-Khang.mp3",
     galleries: [{
         image: "https://tranvu.info/20.10/oanh.ttk.jpg",
@@ -155,7 +159,7 @@ From Teko-ers with love!
     }, {
         image: "https://tranvu.info/20.10/thao.ttt.jpg",
         sender: "tri.ndm@teko.vn",
-        wish:  `Bug còn đó nhưng hôm nay chưa sửa,
+        wish: `Bug còn đó nhưng hôm nay chưa sửa,
                 Deadline xa tạm gác lại vài giờ.
                 Chúc Thảo 20/10 rạng ngời tỏa sáng,
                 Dẫn team vươn xa, OKR về đích.`,
@@ -227,7 +231,7 @@ function usePetals(emojis: string[], count = 22) {
         id: number; x: number; size: number; rot: number; emoji: string; delay: number; duration: number;
     }[]>([]);
     useEffect(() => {
-        const p = Array.from({ length: count }).map((_, i) => ({
+        const p = Array.from({length: count}).map((_, i) => ({
             id: i,
             x: Math.random() * 100, // vw
             size: 18 + Math.random() * 20,
@@ -241,54 +245,13 @@ function usePetals(emojis: string[], count = 22) {
     return petals;
 }
 
-function Ribbon({ text }: { text: string }) {
-    return (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <div className="px-4 py-1 rounded-full bg-white shadow text-xs font-medium flex items-center gap-1">
-                <PartyPopper className="w-4 h-4" /> <span>{text}</span>
-            </div>
-        </div>
-    );
-}
-
-// Fancy shimmering title with animated gradient glow
-function FancyTitle({ text, accentClass }: { text: string; accentClass: string }) {
-    return (
-        <div className="relative inline-block">
-            {/* Aurora glow */}
-            <div
-                className="absolute -inset-6 blur-2xl opacity-70 pointer-events-none"
-                style={{ background: "radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.9), rgba(255,255,255,0.0))" }}
-            />
-            <h1
-                className={`text-4xl md:text-6xl font-black tracking-tight leading-tight ${accentClass} [text-shadow:0_2px_20px_rgba(255,255,255,0.6)]`}
-                style={{
-                    WebkitBackgroundClip: "text",
-                    backgroundClip: "text",
-                    color: "transparent",
-                    backgroundImage:
-                        "linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7), rgba(255,255,255,0.95))",
-                    backgroundSize: "200% 100%",
-                    animation: "shimmer 3s linear infinite",
-                }}
-            >
-                {text}
-            </h1>
-            <style>{`@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}`}</style>
-            {/* Sparkle dots */}
-            <div className="absolute -top-3 -right-3 w-2 h-2 rounded-full bg-white animate-ping" />
-            <div className="absolute -bottom-2 -left-2 w-1.5 h-1.5 rounded-full bg-white/90 animate-pulse" />
-        </div>
-    );
-}
-
 // Animated wish card styled as a realistic paper letter with gold frame background
-function AnimatedWish({ text, sender }: { text: string; sender: string }) {
+function AnimatedWish({text, sender}: { text: string; sender: string }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{opacity: 0, y: 20}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 0.8, ease: "easeOut"}}
             className="relative group mt-8 mb-6 max-w-3xl mx-auto letter-wrapper"
         >
 
@@ -312,26 +275,23 @@ function AnimatedWish({ text, sender }: { text: string; sender: string }) {
 
                     <motion.div
                         className="vietnamese-text text-lg md:text-xl leading-relaxed mt-5 message-text-animation"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{delay: 0.3}}
                     >
-                        <TypewriterWish text={text} />
+                        <TypewriterWish text={text}/>
 
-                        {/*/!* Signature with flourish *!/*/}
-                        {/*<motion.div*/}
-                        {/*    className="letter-signature"*/}
-                        {/*    initial={{ opacity: 0, scale: 0.95 }}*/}
-                        {/*    animate={{ opacity: 1, scale: 1 }}*/}
-                        {/*    transition={{ delay: text.length * 0.015 + 1 }}*/}
-                        {/*>*/}
-                        {/*    <div className="relative">*/}
-                        {/*        {sender}*/}
-                        {/*        <svg className="absolute -bottom-3 left-0 w-full h-3 opacity-30" viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg">*/}
-                        {/*            <path d="M0,5 Q25,0 50,5 T100,5" fill="none" stroke="#d24f79" strokeWidth="1"></path>*/}
-                        {/*        </svg>*/}
-                        {/*    </div>*/}
-                        {/*</motion.div>*/}
+                        {/* Signature with flourish */}
+                        <motion.div
+                            className="letter-signature"
+                            initial={{opacity: 0, scale: 0.95}}
+                            animate={{opacity: 1, scale: 1}}
+                            transition={{delay: text.length * 0.026 + 1}}
+                        >
+                            <div className="relative">
+                                {sender}
+                            </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>
@@ -344,8 +304,10 @@ function EtherealBackdrop() {
     return (
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
             {/* Aurora gradients */}
-            <div className="absolute -top-32 -left-32 w-[60vw] h-[60vw] rounded-full blur-3xl opacity-50 bg-gradient-to-tr from-white/40 via-white/20 to-white/10 animate-[float_18s_ease-in-out_infinite]" />
-            <div className="absolute -bottom-40 -right-40 w-[55vw] h-[55vw] rounded-full blur-3xl opacity-50 bg-gradient-to-tr from-white/30 via-white/15 to-white/5 animate-[float_22s_ease-in-out_infinite_reverse]" />
+            <div
+                className="absolute -top-32 -left-32 w-[60vw] h-[60vw] rounded-full blur-3xl opacity-50 bg-gradient-to-tr from-white/40 via-white/20 to-white/10 animate-[float_18s_ease-in-out_infinite]"/>
+            <div
+                className="absolute -bottom-40 -right-40 w-[55vw] h-[55vw] rounded-full blur-3xl opacity-50 bg-gradient-to-tr from-white/30 via-white/15 to-white/5 animate-[float_22s_ease-in-out_infinite_reverse]"/>
             {/* Glass bubbles */}
             {[...Array(6)].map((_, i) => (
                 <div
@@ -368,31 +330,33 @@ function EtherealBackdrop() {
     );
 }
 
-// lightweight copy of spanClass for tests (pure)
-function spanClassTest(i:number){ return [0,4,7,10].includes(i); }
-
 // Typewriter wish that reveals text char-by-char (popup panel)
-function TypewriterWish({ text, sender }: { text: string, sender: string }) {
+function TypewriterWish({text, sender}: { text: string, sender: string }) {
     const [typed, setTyped] = React.useState("");
     const [done, setDone] = React.useState(false);
     React.useEffect(() => {
-        setTyped(""); setDone(false);
+        setTyped("");
+        setDone(false);
         let i = 0;
         const speed = 28; // ms per char
         const id = setInterval(() => {
-            i++; const next = text.slice(0, i);
+            i++;
+            const next = text.slice(0, i);
             setTyped(next);
-            if (i >= text.length) { clearInterval(id); setDone(true); }
+            if (i >= text.length) {
+                clearInterval(id);
+                setDone(true);
+            }
         }, speed);
         return () => clearInterval(id);
     }, [text]);
     return (
         <div
-            className="mt-4 text-base md:text-lg leading-relaxed text-gray-800"
-            style={{ whiteSpace: "pre-line", textAlign: "left" }}
+            className="mt-4 text-base md:text-md leading-relaxed text-gray-800"
+            style={{whiteSpace: "pre-line", textAlign: "left"}}
         >
             {typed}
-            {!done && <span className="border-r-2 border-pink-400 ml-0.5 animate-pulse" />}
+            {!done && <span className="border-r-2 border-pink-400 ml-0.5 animate-pulse"/>}
             {done && sender && (
                 <div className="mt-4 text-sm text-gray-500">— {sender}</div>
             )}
@@ -413,12 +377,13 @@ export default function WomensDay20_10() {
 
     // Observe gallery in-view to morph header style
     const galleryRef = useRef<HTMLDivElement | null>(null);
+    const videoRef = useRef<HTMLDivElement | null>(null);
     const mainRef = useRef<HTMLDivElement | null>(null);
     const [inGallery, setInGallery] = useState(false);
     const [galleries, setGalleries] = useState(data.galleries);
 
     useEffect(() => {
-        const obs = new IntersectionObserver(([entry]) => setInGallery(!!entry?.isIntersecting), { threshold: 0.55 });
+        const obs = new IntersectionObserver(([entry]) => setInGallery(!!entry?.isIntersecting), {threshold: 0.55});
         if (galleryRef.current) obs.observe(galleryRef.current);
         return () => obs.disconnect();
     }, []);
@@ -431,16 +396,21 @@ export default function WomensDay20_10() {
     const scrollToSlide = (slideIndex: number) => {
         setCurrentSlide(slideIndex);
         if (slideIndex === 0 && mainRef.current) {
-            mainRef.current.scrollIntoView({ behavior: 'smooth' });
-        } else if (slideIndex === 1 && galleryRef.current) {
-            galleryRef.current.scrollIntoView({ behavior: 'smooth' });
+            mainRef.current.scrollIntoView({behavior: 'smooth'});
+        } else if (slideIndex === 1 && videoRef.current) {
+            videoRef.current.scrollIntoView({behavior: 'smooth'});
+        } else if (slideIndex === 2 && galleryRef.current) {
+            galleryRef.current.scrollIntoView({behavior: 'smooth'});
         }
     };
 
     // POPUP STATE (reusing names)
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
-    const openLightbox = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
+    const openLightbox = (i: number) => {
+        setLightboxIndex(i);
+        setLightboxOpen(true);
+    };
     const closeLightbox = () => setLightboxOpen(false);
     const nextLightbox = () => setLightboxIndex((i) => (i + 1) % data.gallery.length);
     const prevLightbox = () => setLightboxIndex((i) => (i - 1 + data.gallery.length) % data.gallery.length);
@@ -460,37 +430,26 @@ export default function WomensDay20_10() {
 
     useEffect(() => {
         if (!audioRef.current) return;
-        playing ? audioRef.current.play().catch(() => {}) : audioRef.current.pause();
+        playing ? audioRef.current.play().catch(() => {
+        }) : audioRef.current.pause();
     }, [playing]);
 
-    const share = async () => {
-        const text = `${data.title} — ${data.recipient}\n${data.mainMessage}\n${data.sender}`;
-        const url = typeof window !== "undefined" ? window.location.href : "";
-        if ((navigator as any).share) {
-            try {
-                await (navigator as any).share({ title: data.title, text, url });
-            } catch {}
-        } else {
-            navigator.clipboard?.writeText(`${text}\n${url}`);
-            alert("Đã copy lời chúc & link vào clipboard!");
-        }
-    };
-
     return (
-        <div id="top" className={`min-h-screen bg-gradient-to-b ${theme.bgFrom} ${theme.bgTo} relative overflow-hidden`}>
-            <EtherealBackdrop />
-            <AnimatedBackground />
+        <div id="top"
+             className={`min-h-screen bg-gradient-to-b ${theme.bgFrom} ${theme.bgTo} relative overflow-hidden`}>
+            <EtherealBackdrop/>
+            <AnimatedBackground/>
 
             {/* Floating petals */}
             <div className="pointer-events-none absolute inset-0">
                 {petals.map((p) => (
                     <motion.div
                         key={p.id}
-                        initial={{ y: -60, rotate: p.rot }}
-                        animate={{ y: "110vh", rotate: p.rot + 120 }}
-                        transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
-                        style={{ left: `${p.x}vw`, fontSize: p.size }}
-                        className="absolute opacity-70"
+                        initial={{y: -60, rotate: p.rot}}
+                        animate={{y: "110vh", rotate: p.rot + 120}}
+                        transition={{duration: p.duration, delay: p.delay, repeat: Infinity, ease: "easeInOut"}}
+                        style={{left: `${p.x}vw`, fontSize: p.size}}
+                        className="fixed opacity-70"
                     >
                         {p.emoji}
                     </motion.div>
@@ -500,8 +459,9 @@ export default function WomensDay20_10() {
             {/* Fixed Header */}
             <header className={`top-0 left-0 right-0 z-30 transition-colors duration-500`}>
                 <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-                    <div className={`flex items-center gap-2 ${inGallery ? "text-white mix-blend-difference" : theme.text}`}>
-                        <Sparkles className="w-6 h-6" />
+                    <div
+                        className={`flex items-center gap-2 ${inGallery ? "text-white mix-blend-difference" : theme.text}`}>
+                        <Sparkles className="w-6 h-6"/>
                         <span className="font-semibold tracking-wide">Vietnamese Women's Day</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -515,11 +475,18 @@ export default function WomensDay20_10() {
                             <button
                                 onClick={() => scrollToSlide(1)}
                                 className={`h-2.5 w-2.5 rounded-full transition-all ${currentSlide === 1 ? `${theme.accent} scale-125` : 'bg-gray-300 hover:bg-gray-400'}`}
+                                aria-label="Go to video section"
+                            />
+                            <button
+                                onClick={() => scrollToSlide(2)}
+                                className={`h-2.5 w-2.5 rounded-full transition-all ${currentSlide === 2 ? `${theme.accent} scale-125` : 'bg-gray-300 hover:bg-gray-400'}`}
                                 aria-label="Go to gallery section"
                             />
                         </div>
-                        <button onClick={() => setPlaying((p) => !p)} className={`rounded-xl px-3 py-2 text-sm shadow ${inGallery ? "bg-white/20 text-white hover:bg-white/30" : theme.chip} hover:opacity-90 flex items-center gap-2`}>
-                            <Music2 className={`w-4 h-4 ${playing ? "animate-pulse" : ""}`} /> {playing ? "Tắt nhạc" : "Phát nhạc"}
+                        <button onClick={() => setPlaying((p) => !p)}
+                                className={`rounded-xl px-3 py-2 text-sm shadow ${inGallery ? "bg-white/20 text-white hover:bg-white/30" : theme.chip} hover:opacity-90 flex items-center gap-2`}>
+                            <Music2
+                                className={`w-4 h-4 ${playing ? "animate-pulse" : ""}`}/> {playing ? "Tắt nhạc" : "Phát nhạc"}
                         </button>
                     </div>
                 </div>
@@ -533,19 +500,21 @@ export default function WomensDay20_10() {
                         className={`p-3 rounded-full shadow-lg ${theme.btn} hover:scale-110 transition-transform`}
                         aria-label="Previous section"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5}
+                             stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
                         </svg>
                     </button>
                 )}
-                {currentSlide < 1 && (
+                {currentSlide < 2 && (
                     <button
                         onClick={() => scrollToSlide(currentSlide + 1)}
                         className={`p-3 rounded-full shadow-lg ${theme.btn} hover:scale-110 transition-transform animate-bounce`}
                         aria-label="Next section"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5}
+                             stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
                         </svg>
                     </button>
                 )}
@@ -560,34 +529,73 @@ export default function WomensDay20_10() {
             </div>
 
             {/* Hero / Wish Section - Full Screen */}
-            <main ref={mainRef} className="relative z-10 min-h-screen flex items-center justify-center snap-start snap-always" id="greeting-section">
-                <div className="w-full max-w-5xl mx-auto px-4" >
+            <main ref={mainRef}
+                  className="relative z-10 min-h-screen flex items-center justify-center snap-start snap-always"
+                  id="greeting-section">
+                <div className="w-full max-w-5xl mx-auto px-4">
                     <section className={`mt-6 md:mt-0 p-6 md:p-10 rounded-3xl bg-letter ${theme.glow}`}>
                         <div className="relative">
                             {/*<Ribbon text="Happy Vietnamese Women's Day" />*/}
                             <div className="flex flex-col items-center text-center">
-                                {showWish && <AnimatedWish text={data.mainMessage} />}
+                                {showWish && <AnimatedWish text={data.mainMessage} sender={data.sender}/>}
                             </div>
                         </div>
                     </section>
                 </div>
             </main>
 
+            {/* YT Video*/}
+            <section ref={videoRef}
+                     className="relative min-h-screen w-full py-16 overflow-hidden flex items-center justify-center snap-start snap-always">
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center">
+                    {/* Header section with enhanced animation */}
+                    <motion.div
+                        className="mb-10 flex flex-col items-center text-center"
+                        initial={{opacity: 0, y: 20}}
+                        whileInView={{opacity: 1, y: 0}}
+                        viewport={{once: true}}
+                        transition={{duration: 0.7}}
+                    >
+                        <h2 className="text-2xl md:text-5xl font-black text-gray-800 drop-shadow-sm tracking-tight relative inline-block">
+                            Teko-ers chung <span className={`${theme.accent}`}>lời nói</span>
+                            <span className="absolute -top-3 -right-6 text-2xl animate-pulse">
+                                {data.accentEmojis[0]}
+                            </span>
+                        </h2>
+                        <div className={`w-20 h-1 mt-3 ${theme.accent} rounded-full opacity-80`}></div>
+                    </motion.div>
+                    <div
+                        className="relative w-full aspect-square max-w-[900px] max-h-[500px] min-h-[100px] mx-auto mt-20 rounded-xl overflow-hidden">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/s60snNPQ0WA" title=""
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen></iframe>
+                    </div>
+                </div>
+
+            </section>
+
             {/* Enhanced Transparent Gallery - Full Screen */}
-            <section id="gallery" ref={galleryRef} className="relative min-h-screen w-full py-16 overflow-hidden flex items-center justify-center snap-start snap-always">
+            <section id="gallery" ref={galleryRef}
+                     className="relative min-h-screen w-full py-16 overflow-hidden flex items-center justify-center snap-start snap-always">
                 {/* Advanced Background with Prismatic Effects - Completely redesigned */}
                 <div className="absolute inset-0">
                     {/* Animated floating circles */}
-                    <div className={`absolute top-20 left-10 w-60 h-60 rounded-full ${theme.bgFrom} opacity-20 blur-3xl`}
-                         style={{animation: 'float 25s ease-in-out infinite'}}></div>
-                    <div className={`absolute bottom-20 right-10 w-80 h-80 rounded-full ${theme.bgTo} opacity-20 blur-3xl`}
-                         style={{animation: 'float 30s ease-in-out infinite reverse'}}></div>
+                    <div
+                        className={`absolute top-20 left-10 w-60 h-60 rounded-full ${theme.bgFrom} opacity-20 blur-3xl`}
+                        style={{animation: 'float 25s ease-in-out infinite'}}></div>
+                    <div
+                        className={`absolute bottom-20 right-10 w-80 h-80 rounded-full ${theme.bgTo} opacity-20 blur-3xl`}
+                        style={{animation: 'float 30s ease-in-out infinite reverse'}}></div>
 
                     {/* Decorative elements - transparent geometric shapes */}
-                    <div className="absolute top-1/4 left-1/3 w-32 h-32 border border-white/20 rounded-full rotate-45 backdrop-blur-sm"
-                         style={{animation: 'spin-slow-reverse 15s linear infinite'}}></div>
-                    <div className="absolute bottom-1/4 right-1/3 w-40 h-40 border border-white/30 rounded-full backdrop-blur-sm"
-                         style={{animation: 'spin-slow 20s linear infinite'}}></div>
+                    <div
+                        className="absolute top-1/4 left-1/3 w-32 h-32 border border-white/20 rounded-full rotate-45 backdrop-blur-sm"
+                        style={{animation: 'spin-slow-reverse 15s linear infinite'}}></div>
+                    <div
+                        className="absolute bottom-1/4 right-1/3 w-40 h-40 border border-white/30 rounded-full backdrop-blur-sm"
+                        style={{animation: 'spin-slow 20s linear infinite'}}></div>
 
                     {/* Light beam effects */}
                     <div className="absolute inset-0 opacity-30"
@@ -619,26 +627,27 @@ export default function WomensDay20_10() {
                          }}></div>
 
                     {/* Central light effect with animation */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] opacity-30"
-                         style={{
-                             background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)',
-                             animation: 'pulse-slow 10s infinite'
-                         }}></div>
+                    <div
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] opacity-30"
+                        style={{
+                            background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)',
+                            animation: 'pulse-slow 10s infinite'
+                        }}></div>
                 </div>
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center">
                     {/* Header section with enhanced animation */}
                     <motion.div
                         className="mb-10 flex flex-col items-center text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
+                        initial={{opacity: 0, y: 20}}
+                        whileInView={{opacity: 1, y: 0}}
+                        viewport={{once: true}}
+                        transition={{duration: 0.7}}
                     >
                         <h2 className="text-2xl md:text-5xl font-black text-gray-800 drop-shadow-sm tracking-tight relative inline-block">
-                            Gửi lời đến <span className={`${theme.accent}`}>chị em</span>
+                            Trao chân thành đến <span className={`${theme.accent}`}>chị em</span>
                             <span className="absolute -top-3 -right-6 text-2xl animate-pulse">
-                                {data.accentEmojis[0]}
+                                {data.accentEmojis[3]}
                             </span>
                         </h2>
                         <div className={`w-20 h-1 mt-3 ${theme.accent} rounded-full opacity-80`}></div>
@@ -663,7 +672,8 @@ export default function WomensDay20_10() {
                                      border: "6px solid rgb(59, 89, 128, 0.4)"
                                  }}
                             ></div>
-                            <img className={"absolute"} src={"https://career.teko.vn/images/Teko-Logo-solution-dark.png"}/>
+                            <img className={"absolute"}
+                                 src={"https://career.teko.vn/images/Teko-Logo-solution-dark.png"}/>
 
                         </div>
 
@@ -731,9 +741,9 @@ export default function WomensDay20_10() {
                                         left: `${x}%`,
                                         filter: 'drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1))',
                                     }}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
+                                    initial={{opacity: 0, scale: 0.8}}
+                                    whileInView={{opacity: 1, scale: 1}}
+                                    viewport={{once: true}}
                                     transition={{
                                         duration: 0.1,
                                         delay: i * 0.1 % 0.5,
@@ -770,15 +780,16 @@ export default function WomensDay20_10() {
                                         />
                                         <defs>
                                             <linearGradient id={`lineGradient${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                                                <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-                                                <stop offset="50%" stopColor="white" />
-                                                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                                                <stop offset="0%" stopColor="rgba(255,255,255,0)"/>
+                                                <stop offset="50%" stopColor="white"/>
+                                                <stop offset="100%" stopColor="rgba(255,255,255,0)"/>
                                             </linearGradient>
                                         </defs>
                                     </svg>
 
                                     {/* Enhanced glass morphism container */}
-                                    <div className="group relative w-full h-full cursor-pointer backdrop-blur-sm" onClick={() => openLightbox(i)}>
+                                    <div className="group relative w-full h-full cursor-pointer backdrop-blur-sm"
+                                         onClick={() => openLightbox(i)}>
                                         {/* Enhanced glass border effect */}
                                         <div className="absolute inset-0 rounded-full border border-white/50
                                                       group-hover:border-white/80 transition-all z-10"></div>
@@ -795,11 +806,12 @@ export default function WomensDay20_10() {
                                             <div className="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg
                                                           scale-0 group-hover:scale-100 transition-transform duration-50
                                                           flex items-center justify-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                     fill="currentColor"
                                                      className="w-4 h-4 text-white">
                                                     <path fillRule="evenodd"
                                                           d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653z"
-                                                          clipRule="evenodd" />
+                                                          clipRule="evenodd"/>
                                                 </svg>
                                             </div>
                                         </div>
@@ -807,7 +819,8 @@ export default function WomensDay20_10() {
                                         {/* Enhanced image with glass effect */}
                                         <div className="relative w-full h-full overflow-hidden rounded-full">
                                             {/* Enhanced overlay gradient */}
-                                            <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-70 z-10"></div>
+                                            <div
+                                                className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-70 z-10"></div>
 
                                             {/* Enhanced image with blur effect */}
                                             <img
@@ -832,10 +845,10 @@ export default function WomensDay20_10() {
                     <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                         <motion.div
                             className={`px-6 py-2 rounded-full ${theme.chip} backdrop-blur shadow flex items-center gap-2`}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.5 }}
+                            initial={{opacity: 0, y: 20}}
+                            whileInView={{opacity: 1, y: 0}}
+                            viewport={{once: true}}
+                            transition={{delay: 0.5}}
                         >
                             <span className="text-lg">{data.accentEmojis[data.accentEmojis.length - 1]}</span>
                             <span className="font-medium">Nhấn vào ảnh để xem chi tiết</span>
@@ -849,10 +862,10 @@ export default function WomensDay20_10() {
                 {lightboxOpen && (
                     <motion.div
                         className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
+                        transition={{duration: 0.3}}
                     >
                         {/* Enhanced background blur */}
                         <div
@@ -862,7 +875,7 @@ export default function WomensDay20_10() {
 
                         {/* Enhanced tooltip/chat style container */}
                         <motion.div
-                            initial={{ scale: 0.8, y: 30, opacity: 0 }}
+                            initial={{scale: 0.8, y: 30, opacity: 0}}
                             animate={{
                                 scale: 1,
                                 y: 0,
@@ -874,7 +887,7 @@ export default function WomensDay20_10() {
                                     delay: 0.1
                                 }
                             }}
-                            exit={{ scale: 0.9, y: 20, opacity: 0 }}
+                            exit={{scale: 0.9, y: 20, opacity: 0}}
                             className={`relative z-10 w-full max-w-5xl overflow-hidden`}
                         >
                             {/* Enhanced main tooltip/chat bubble */}
@@ -883,9 +896,12 @@ export default function WomensDay20_10() {
                                            ${theme.glow}`}>
 
                                 {/* Enhanced decorative elements */}
-                                <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white/50 to-transparent opacity-50"></div>
-                                <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-gradient-to-br from-white/30 to-transparent blur-xl"></div>
-                                <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-gradient-to-tl from-white/20 to-transparent blur-xl"></div>
+                                <div
+                                    className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white/50 to-transparent opacity-50"></div>
+                                <div
+                                    className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-gradient-to-br from-white/30 to-transparent blur-xl"></div>
+                                <div
+                                    className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-gradient-to-tl from-white/20 to-transparent blur-xl"></div>
 
                                 {/* Close button */}
                                 <button
@@ -895,24 +911,31 @@ export default function WomensDay20_10() {
                                               hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50`}
                                     aria-label="Close"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
                                     </svg>
                                 </button>
 
                                 {/* Image with quotes */}
-                                <div className="p-6 pt-14 pb-8 md:p-8 md:pt-16 md:pb-10 flex flex-col md:flex-row gap-6 items-center">
+                                <div
+                                    className="p-6 pt-14 pb-8 md:p-8 md:pt-16 md:pb-10 flex flex-col md:flex-row gap-6 items-center">
                                     {/* Image container with enhanced glass effect */}
-                                    <div className="relative w-full md:w-3/5 aspect-[4/3] rounded-2xl overflow-hidden group">
+                                    <div
+                                        className="relative w-full md:w-3/5 aspect-[4/3] rounded-2xl overflow-hidden group">
                                         {/* Prismatic border */}
-                                        <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-pink-500/30 via-purple-500/30 to-cyan-500/30 opacity-70 group-hover:opacity-100 blur transition-opacity"></div>
+                                        <div
+                                            className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-pink-500/30 via-purple-500/30 to-cyan-500/30 opacity-70 group-hover:opacity-100 blur transition-opacity"></div>
 
                                         {/* Main image */}
-                                        <div className="relative h-full rounded-2xl overflow-hidden border border-white/50 bg-white/20">
-                                            <img src={galleries[lightboxIndex].image} alt="Enlarged view" className="w-full h-full object-cover" />
+                                        <div
+                                            className="relative h-full rounded-2xl overflow-hidden border border-white/50 bg-white/20">
+                                            <img src={galleries[lightboxIndex].image} alt="Enlarged view"
+                                                 className="w-full h-full object-cover"/>
 
                                             {/* Enhanced prismatic highlight */}
-                                            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50"></div>
+                                            <div
+                                                className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50"></div>
                                         </div>
                                     </div>
 
@@ -924,7 +947,8 @@ export default function WomensDay20_10() {
                                         </div>
 
                                         {/* Typewriter effect */}
-                                        <TypewriterWish text={galleries[lightboxIndex].wish} sender={galleries[lightboxIndex].sender}/>
+                                        <TypewriterWish text={galleries[lightboxIndex].wish}
+                                                        sender={galleries[lightboxIndex].sender}/>
 
                                         {/* Image counter */}
                                         <div className="pt-2 text-xs text-gray-500 font-medium flex items-center gap-2">
@@ -941,7 +965,7 @@ export default function WomensDay20_10() {
             </AnimatePresence>
 
             {/* Audio player (hidden) */}
-            {data.musicUrl && <audio ref={audioRef} src={data.musicUrl} loop />}
+            {data.musicUrl && <audio ref={audioRef} src={data.musicUrl} loop/>}
 
             {/* Add scroll snapping and full-page section styles */}
             <style jsx="true">{`
@@ -951,33 +975,57 @@ export default function WomensDay20_10() {
                 }
 
                 @keyframes pulse-slow {
-                    0%, 100% { opacity: 0.4; }
-                    50% { opacity: 0.7; }
+                    0%, 100% {
+                        opacity: 0.4;
+                    }
+                    50% {
+                        opacity: 0.7;
+                    }
                 }
 
                 @keyframes float {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-12px); }
+                    0%, 100% {
+                        transform: translateY(0);
+                    }
+                    50% {
+                        transform: translateY(-12px);
+                    }
                 }
 
                 @keyframes spin-slow {
-                    from { transform: translate(-50%, -50%) rotate(0deg); }
-                    to { transform: translate(-50%, -50%) rotate(360deg); }
+                    from {
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    to {
+                        transform: translate(-50%, -50%) rotate(360deg);
+                    }
                 }
 
                 @keyframes spin-slow-reverse {
-                    from { transform: translate(-50%, -50%) rotate(0deg); }
-                    to { transform: translate(-50%, -50%) rotate(-360deg); }
+                    from {
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    to {
+                        transform: translate(-50%, -50%) rotate(-360deg);
+                    }
                 }
 
                 @keyframes shimmer {
-                    0% { background-position: 0% 50%; }
-                    100% { background-position: 200% 50%; }
+                    0% {
+                        background-position: 0% 50%;
+                    }
+                    100% {
+                        background-position: 200% 50%;
+                    }
                 }
 
                 @keyframes gradient-shift {
-                    0% { background-position: 0% 0%; }
-                    100% { background-position: 100% 100%; }
+                    0% {
+                        background-position: 0% 0%;
+                    }
+                    100% {
+                        background-position: 100% 100%;
+                    }
                 }
 
                 .animate-pulse-slow {
@@ -1003,5 +1051,5 @@ export default function WomensDay20_10() {
 // Mount the app
 if (typeof document !== "undefined") {
     const root = createRoot(document.getElementById("root")!);
-    root.render(<WomensDay20_10 />);
+    root.render(<WomensDay20_10/>);
 }
