@@ -138,8 +138,10 @@ Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về
         image: "https://tranvu.info/20.10/an.ntt.jpg?1810",
         sender: "thuc.tm1@teko.vn",
         wish: `Chúc chị 20/10 mãi luôn xinh đẹp và tràn đầy niềm vui bên tổ ấm nhỏ của mình. 💐
-                Hi vọng mỗi ngày đến công ty sẽ luôn nhìn thấy nụ cười tươi rạng rỡ của chị, vì chị cười rất xinh đẹp ạ.
-                Chúc chị luôn hạnh phúc, thành công trong công việc, được mọi người yêu thương và gặp thật nhiều may mắn trong cuộc sống. Mong rằng niềm vui và năng lượng tích cực của chị sẽ lan tỏa đến tất cả mọi người xung quanh! 🌸💖`,
+               
+               Hi vọng mỗi ngày đến công ty sẽ luôn nhìn thấy nụ cười tươi rạng rỡ của chị, vì chị cười rất xinh đẹp ạ.
+               
+               Chúc chị luôn hạnh phúc, thành công trong công việc, được mọi người yêu thương và gặp thật nhiều may mắn trong cuộc sống. Mong rằng niềm vui và năng lượng tích cực của chị sẽ lan tỏa đến tất cả mọi người xung quanh! 🌸💖`,
     }, {
         image: "https://tranvu.info/20.10/thuan.nt.jpg?",
         sender: "huu.dm@teko.vn",

@@ -6,6 +6,15 @@
 @tailwind components;
 @tailwind utilities;
 
+::-moz-selection { /* Code for Firefox */
+    /*color: red;*/
+    background: yellow;
+}
+
+::selection {
+    /*color: red;*/
+    background: #fed6da;
+}
 
 .bg-letter {
     background-image: url('https://tranvu.info/20.10/bg04.jpg?1');
