@@ -380,7 +380,8 @@ export default function WomensDay20_10() {
 
     // Observe gallery in-view to morph header style
     const galleryRef = useRef<HTMLDivElement | null>(null);
-    const videoRef = useRef<HTMLDivElement | null>(null);
+    const videoTekoRef = useRef<HTMLDivElement | null>(null);
+    const videoHCMRef = useRef<HTMLDivElement | null>(null);
     const mainRef = useRef<HTMLDivElement | null>(null);
     const [inGallery, setInGallery] = useState(false);
     const [galleries, setGalleries] = useState(data.galleries);
@@ -400,9 +401,11 @@ export default function WomensDay20_10() {
         setCurrentSlide(slideIndex);
         if (slideIndex === 0 && mainRef.current) {
             mainRef.current.scrollIntoView({behavior: 'smooth'});
-        } else if (slideIndex === 1 && videoRef.current) {
-            videoRef.current.scrollIntoView({behavior: 'smooth'});
-        } else if (slideIndex === 2 && galleryRef.current) {
+        } else if (slideIndex === 1 && videoTekoRef.current) {
+            videoTekoRef.current.scrollIntoView({behavior: 'smooth'});
+        } else if (slideIndex === 2 && videoHCMRef.current) {
+            videoHCMRef.current.scrollIntoView({behavior: 'smooth'});
+        } else if (slideIndex === 3 && galleryRef.current) {
             galleryRef.current.scrollIntoView({behavior: 'smooth'});
         }
     };
@@ -478,11 +481,16 @@ export default function WomensDay20_10() {
                             <button
                                 onClick={() => scrollToSlide(1)}
                                 className={`h-2.5 w-2.5 rounded-full transition-all ${currentSlide === 1 ? `${theme.accent} scale-125` : 'bg-gray-300 hover:bg-gray-400'}`}
-                                aria-label="Go to video section"
+                                aria-label="Go to TekoVideo section"
                             />
                             <button
                                 onClick={() => scrollToSlide(2)}
                                 className={`h-2.5 w-2.5 rounded-full transition-all ${currentSlide === 2 ? `${theme.accent} scale-125` : 'bg-gray-300 hover:bg-gray-400'}`}
+                                aria-label="Go to HCMVideo section"
+                            />
+                            <button
+                                onClick={() => scrollToSlide(3)}
+                                className={`h-2.5 w-2.5 rounded-full transition-all ${currentSlide === 3 ? `${theme.accent} scale-125` : 'bg-gray-300 hover:bg-gray-400'}`}
                                 aria-label="Go to gallery section"
                             />
                         </div>
@@ -509,7 +517,7 @@ export default function WomensDay20_10() {
                         </svg>
                     </button>
                 )}
-                {currentSlide < 2 && (
+                {currentSlide < 3 && (
                     <button
                         onClick={() => scrollToSlide(currentSlide + 1)}
                         className={`p-3 rounded-full shadow-lg ${theme.btn} hover:scale-110 transition-transform animate-bounce`}
@@ -546,8 +554,7 @@ export default function WomensDay20_10() {
                 </div>
             </main>
 
-            {/* YT Video*/}
-            <section ref={videoRef}
+            <section ref={videoTekoRef}
                      className="relative min-h-screen w-full py-16 overflow-hidden flex items-center justify-center snap-start snap-always">
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center">
                     {/* Header section with enhanced animation */}
@@ -559,7 +566,45 @@ export default function WomensDay20_10() {
                         transition={{duration: 0.7}}
                     >
                         <h2 className="text-2xl md:text-5xl font-black text-gray-800 drop-shadow-sm tracking-tight relative inline-block">
-                            Teko-ers chung <span className={`${theme.accent}`}>lời nói</span>
+                            Từ những <span className={`${theme.accent}`}>sẻ chia</span> của sếp Bình
+                            <span className="absolute -top-3 -right-6 text-2xl animate-pulse">
+                                {data.accentEmojis[0]}
+                            </span>
+                        </h2>
+                        <div className={`w-20 h-1 mt-3 ${theme.accent} rounded-full opacity-80`}></div>
+                    </motion.div>
+                    <blockquote className="relative mx-auto max-w-prose text-center italic text-xl md:text-xl leading-relaxed text-gray-800 p-4 md:p-5 bg-white/6 rounded-lg border-l-4 border-pink-300">
+                        <span className="absolute -top-6 -left-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">“</span>
+                        Gửi đến những bông hoa rực rỡ nhất trong giới công nghệ
+                        <span className="absolute -bottom-6 -right-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">”</span>
+                    </blockquote>
+
+                    <div
+                        className="relative w-full aspect-square max-w-[900px] max-h-[500px] min-h-[100px] mx-auto mt-10 rounded-xl overflow-hidden">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/6PphjUHePPk"
+                                title="[Teko] Happy Vietnamese Women&#39;s Day" frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen></iframe>
+                    </div>
+                </div>
+
+            </section>
+
+            {/* HCM Video Video*/}
+            <section ref={videoHCMRef}
+                     className="relative min-h-screen w-full py-16 overflow-hidden flex items-center justify-center snap-start snap-always">
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center">
+                    {/* Header section with enhanced animation */}
+                    <motion.div
+                        className="mb-10 flex flex-col items-center text-center"
+                        initial={{opacity: 0, y: 20}}
+                        whileInView={{opacity: 1, y: 0}}
+                        viewport={{once: true}}
+                        transition={{duration: 0.7}}
+                    >
+                        <h2 className="text-2xl md:text-5xl font-black text-gray-800 drop-shadow-sm tracking-tight relative inline-block">
+                            Đến Teko-ers cùng chung <span className={`${theme.accent}`}>lời nói</span>
                             <span className="absolute -top-3 -right-6 text-2xl animate-pulse">
                                 {data.accentEmojis[0]}
                             </span>
@@ -653,7 +698,7 @@ export default function WomensDay20_10() {
                         transition={{duration: 0.7}}
                     >
                         <h2 className="text-2xl md:text-5xl font-black text-gray-800 drop-shadow-sm tracking-tight relative inline-block">
-                            Trao chân thành đến <span className={`${theme.accent}`}>chị em</span>
+                            Trao <span className={`${theme.accent}`}>chân thành</span> đến chị em
                             <span className="absolute -top-3 -right-6 text-2xl animate-pulse">
                                 {data.accentEmojis[3]}
                             </span>
@@ -662,7 +707,7 @@ export default function WomensDay20_10() {
                     </motion.div>
                     <blockquote className="relative mx-auto max-w-prose text-center italic text-xl md:text-xl leading-relaxed text-gray-800 p-4 md:p-5 bg-white/6 rounded-lg border-l-4 border-pink-300">
                         <span className="absolute -top-6 -left-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">“</span>
-                        Tạm dừng bàn phím, bật chế độ sẻ chia.
+                        Tạm dừng gõ phím, bật chế độ sẻ chia.
                         <span className="absolute -bottom-6 -right-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">”</span>
                     </blockquote>
                     {/* Enhanced Transparent Gallery with CSS3 Effects */}
