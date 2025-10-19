@@ -1,6 +1,7 @@
 /* Import font nghệ thuật */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Parisienne&family=Playfair+Display:ital@0;1&family=Montserrat:wght@400;500;600&family=Quicksand:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&family=Playwrite+AU+TAS:wght@100..400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,6 +15,17 @@
     background-color: rgba(255, 255, 255, 0.6);
 }
 
+.bg-rose-600 {
+    background: #fff;
+    color: gray;
+    box-shadow: none;
+    --tw-bg-opacity: 1;
+}
+
+.bg-rose-600:hover {
+    background-color: rgb(225 29 72 / var(--tw-bg-opacity, 1));
+    color: #fff;
+}
 
 /* Letter styling - enhanced */
 
@@ -160,11 +172,11 @@
 }
 
 
-
 @media screen and (max-width: 768px) {
     .mobile-text-show {
         display: block;
     }
+
     .bg-letter {
         background-image: url('https://tranvu.info/20.10/bg03.jpg?2');
         background-size: cover;
@@ -177,6 +189,7 @@
         min-height: 735px;
         padding-right: 0;
     }
+
     .letter-signature {
         padding-right: 0;
     }

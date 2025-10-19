@@ -123,7 +123,7 @@ Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về
     accentEmojis: ["🌸", "💐", "🌹", "💖", "✨", "🎉"],
     musicUrl: "https://tranvu.info/20.10/Em-Trong-Mat-Toi-Anh-Khang.mp3",
     galleries: [{
-        image: "https://tranvu.info/20.10/oanh.ttk.jpg",
+        image: "https://tranvu.info/20.10/oanh.ttk.jpg?181",
         sender: "minh.nd@teko.vn",
         wish: `Chị như cây lớn giữa rừng xanh
                 Em như mầm mới ngước lên học hoài
@@ -135,7 +135,7 @@ Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về
                 Chúc chị khỏe mạnh thật nhiều
                 Dẫn đường sản phẩm bay vèo lên mây`,
     }, {
-        image: "https://tranvu.info/20.10/an.ntt.jpg",
+        image: "https://tranvu.info/20.10/an.ntt.jpg?1810",
         sender: "thuc.tm1@teko.vn",
         wish: `Chúc chị 20/10 mãi luôn xinh đẹp và tràn đầy niềm vui bên tổ ấm nhỏ của mình. 💐
                 Hi vọng mỗi ngày đến công ty sẽ luôn nhìn thấy nụ cười tươi rạng rỡ của chị, vì chị cười rất xinh đẹp ạ.
@@ -157,7 +157,7 @@ Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về
         sender: "hieu.nm1@teko.vn",
         wish: `Mùa xuân phải có hoa đào gặp nhau phải có lời chào đầu tiên. Vâng lại là em đây, trời xui đất khiến kiểu gì vẫn là em, thôi thì mình cũng quê a Thành là không lòng vòng, sắp tới nhân ngày 20 tháng thập chúc chị có thật nhiều niềm vui, thật nhiều tiền (này quan trọng) cố gắng đạt được target work life balance và đảm bảo sức khỏe luôn ở trạng thái đỉnh cao phong độ (bớt chấm muối lại hộ tui)`,
     }, {
-        image: "https://tranvu.info/20.10/thao.ttt.jpg",
+        image: "https://tranvu.info/20.10/thao.ttt.jpg?182",
         sender: "tri.ndm@teko.vn",
         wish: `Bug còn đó nhưng hôm nay chưa sửa,
                 Deadline xa tạm gác lại vài giờ.
@@ -168,7 +168,7 @@ Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về
         sender: "dang.nn1@teko.vn",
         wish: "Nhân dịp 20/10, chúc cho bạn Dung năm nay sẽ luôn cute :> thành công và luôn tin tưởng vào bản thân trong công việc, quan trọng là lun thư giãn, iu đời nhóooo :>",
     }, {
-        image: "https://tranvu.info/20.10/vy.ttk.jpg",
+        image: "https://tranvu.info/20.10/vy.ttk.jpg?182",
         sender: "bach.tg@teko.vn",
         wish: `Hé lô chị Khánh Vy aka Vy Vu, là em đây, Happy 20/10 🌹!! Chúc chị Vy không chỉ hôm nay mà cả những ngày sau luôn ngập tràn hạnh phúc, niềm vui và thuận lợi trong công việc, cuộc sống. Cảm ơn chị vì sự tận tâm và luôn mang đến năng lượng tích cực cho văn phòng HCM. Chúc chị HR mãi giữ tinh thần "vi vu", vui vẻ và tràn đầy năng lượng mỗi ngàyyyy 🤞🤞🤞.`,
     }, {
@@ -218,7 +218,7 @@ Chúc các chị em luôn xinh đẹp, tự tin, hạnh phúc và tự hào về
                 Đời như blockchain diệu kỳ,
                 Không fork, không lỗi – chỉ vui và chill! 🌸`,
     }, {
-        image: "https://tranvu.info/20.10/nguyen.ndt.jpg?",
+        image: "https://tranvu.info/20.10/nguyen.ndt.jpg?181",
         sender: "dong.cb@teko.vn",
         wish: `Nhân ngày 20/10, chúc chị Nguyên luôn xinh đẹp, tự tin và thành công cuộc sống
                 Cảm ơn chị vì luôn mang lại “giao diện” tươi sáng không chỉ cho sản phẩm mà còn cho cả team`,
@@ -279,14 +279,14 @@ function AnimatedWish({text, sender}: { text: string; sender: string }) {
                         animate={{opacity: 1}}
                         transition={{delay: 0.3}}
                     >
-                        <TypewriterWish text={text}/>
+                        <TypewriterWish text={text} speed={40}/>
 
                         {/* Signature with flourish */}
                         <motion.div
                             className="letter-signature"
                             initial={{opacity: 0, scale: 0.95}}
                             animate={{opacity: 1, scale: 1}}
-                            transition={{delay: text.length * 0.026 + 1}}
+                            transition={{delay: text.length * 0.037 + 2}}
                         >
                             <div className="relative">
                                 {sender}
@@ -331,14 +331,14 @@ function EtherealBackdrop() {
 }
 
 // Typewriter wish that reveals text char-by-char (popup panel)
-function TypewriterWish({text, sender}: { text: string, sender: string }) {
+function TypewriterWish({text, sender, speed}: { text: string, sender: string, speed?: number }) {
     const [typed, setTyped] = React.useState("");
     const [done, setDone] = React.useState(false);
     React.useEffect(() => {
         setTyped("");
         setDone(false);
         let i = 0;
-        const speed = 28; // ms per char
+        const charSpeed = speed || 28; // ms per char
         const id = setInterval(() => {
             i++;
             const next = text.slice(0, i);
@@ -347,7 +347,7 @@ function TypewriterWish({text, sender}: { text: string, sender: string }) {
                 clearInterval(id);
                 setDone(true);
             }
-        }, speed);
+        }, charSpeed);
         return () => clearInterval(id);
     }, [text]);
     return (
@@ -372,6 +372,7 @@ export default function WomensDay20_10() {
     const [openSettings, setOpenSettings] = useState(false);
     const [showWish, setShowWish] = useState(true);
     const [currentSlide, setCurrentSlide] = useState(0); // Track current slide
+    const [hoveredGallery, setHoveredGallery] = useState<number | null>(null); // Track hovered gallery item
 
     const petals = usePetals(data.accentEmojis, 22);
 
@@ -457,10 +458,10 @@ export default function WomensDay20_10() {
             </div>
 
             {/* Fixed Header */}
-            <header className={`top-0 left-0 right-0 z-30 transition-colors duration-500`}>
+            <header className={`fixed top-0 left-0 right-0 z-30 transition-colors duration-500`}>
                 <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
                     <div
-                        className={`flex items-center gap-2 ${inGallery ? "text-white mix-blend-difference" : theme.text}`}>
+                        className={`flex items-center gap-2 ${theme.text}`}>
                         <Sparkles className="w-6 h-6"/>
                         <span className="font-semibold tracking-wide">Vietnamese Women's Day</span>
                     </div>
@@ -484,7 +485,7 @@ export default function WomensDay20_10() {
                             />
                         </div>
                         <button onClick={() => setPlaying((p) => !p)}
-                                className={`rounded-xl px-3 py-2 text-sm shadow ${inGallery ? "bg-white/20 text-white hover:bg-white/30" : theme.chip} hover:opacity-90 flex items-center gap-2`}>
+                                className={`rounded-xl px-3 py-2 text-sm shadow ${ theme.chip} hover:opacity-90 flex items-center gap-2`}>
                             <Music2
                                 className={`w-4 h-4 ${playing ? "animate-pulse" : ""}`}/> {playing ? "Tắt nhạc" : "Phát nhạc"}
                         </button>
@@ -522,18 +523,17 @@ export default function WomensDay20_10() {
             <div className={"mobile-text-show rounded-xl shadow-[0_0_80px_-10px_rgba(244,63,94,0.45)]"} style={{
                 background: "#fff",
                 padding: "8px 16px",
-                margin: "18px 18px 0px 18px",
+                margin: "65px 18px 0px",
                 textAlign: "center",
             }}>
-                Vui lòng sử dụng máy tính để có trải nghiệm tốt nhất!
+                Sử dụng máy tính để có trải nghiệm tốt nhất!
             </div>
-
             {/* Hero / Wish Section - Full Screen */}
             <main ref={mainRef}
                   className="relative z-10 min-h-screen flex items-center justify-center snap-start snap-always"
                   id="greeting-section">
                 <div className="w-full max-w-5xl mx-auto px-4">
-                    <section className={`mt-6 md:mt-0 p-6 md:p-10 rounded-3xl bg-letter ${theme.glow}`}>
+                    <section className={`md:mt-0 p-6 md:p-10 rounded-3xl bg-letter ${theme.glow}`}>
                         <div className="relative">
                             {/*<Ribbon text="Happy Vietnamese Women's Day" />*/}
                             <div className="flex flex-col items-center text-center">
@@ -564,8 +564,14 @@ export default function WomensDay20_10() {
                         </h2>
                         <div className={`w-20 h-1 mt-3 ${theme.accent} rounded-full opacity-80`}></div>
                     </motion.div>
+                    <blockquote className="relative mx-auto max-w-prose text-center italic text-xl md:text-xl leading-relaxed text-gray-800 p-4 md:p-5 bg-white/6 rounded-lg border-l-4 border-pink-300">
+                        <span className="absolute -top-6 -left-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">“</span>
+                            Code có thể lỗi, phụ nữ thì không. Tạm dừng debug để trao yêu thương.
+                        <span className="absolute -bottom-6 -right-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">”</span>
+                    </blockquote>
+
                     <div
-                        className="relative w-full aspect-square max-w-[900px] max-h-[500px] min-h-[100px] mx-auto mt-20 rounded-xl overflow-hidden">
+                        className="relative w-full aspect-square max-w-[900px] max-h-[500px] min-h-[100px] mx-auto mt-10 rounded-xl overflow-hidden">
                         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/s60snNPQ0WA" title=""
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -652,9 +658,13 @@ export default function WomensDay20_10() {
                         </h2>
                         <div className={`w-20 h-1 mt-3 ${theme.accent} rounded-full opacity-80`}></div>
                     </motion.div>
-
+                    <blockquote className="relative mx-auto max-w-prose text-center italic text-xl md:text-xl leading-relaxed text-gray-800 p-4 md:p-5 bg-white/6 rounded-lg border-l-4 border-pink-300">
+                        <span className="absolute -top-6 -left-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">“</span>
+                        Tạm dừng bàn phím, bật chế độ sẻ chia.
+                        <span className="absolute -bottom-6 -right-6 text-5xl md:text-7xl text-pink-300 opacity-80 select-none">”</span>
+                    </blockquote>
                     {/* Enhanced Transparent Gallery with CSS3 Effects */}
-                    <div className="relative w-full aspect-square max-w-[700px] mx-auto">
+                    <div className="relative w-full aspect-square max-w-[600px] mx-auto">
                         {/* Improved Glass Morphism Center Logo */}
                         <div className="absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-20
                                          w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-full
@@ -753,39 +763,9 @@ export default function WomensDay20_10() {
                                         zIndex: 30,
                                         filter: 'drop-shadow(0 12px 20px rgba(0, 0, 0, 0.15))'
                                     }}
+                                    onMouseEnter={() => setHoveredGallery(i)}
+                                    onMouseLeave={() => setHoveredGallery(null)}
                                 >
-                                    {/* Enhanced decorative connect line with gradient */}
-                                    <svg className="absolute"
-                                         style={{
-                                             width: '100vw',
-                                             height: '100vh',
-                                             top: '50%',
-                                             left: '50%',
-                                             transform: 'translate(-50%, -50%)',
-                                             zIndex: -1,
-                                             overflow: 'visible',
-                                             position: 'absolute',
-                                             pointerEvents: 'none'
-                                         }}>
-                                        <path
-                                            d={`M ${x} ${y} Q ${cpX} ${cpY} 50 50`}
-                                            fill="none"
-                                            stroke={`url(#lineGradient${i})`}
-                                            strokeWidth="1"
-                                            strokeDasharray={i % 2 === 0 ? "0" : "4 2"}
-                                            className="opacity-60"
-                                            style={{
-                                                filter: 'drop-shadow(0 0 2px rgba(255, 255, 255, 0.7))',
-                                            }}
-                                        />
-                                        <defs>
-                                            <linearGradient id={`lineGradient${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                                                <stop offset="0%" stopColor="rgba(255,255,255,0)"/>
-                                                <stop offset="50%" stopColor="white"/>
-                                                <stop offset="100%" stopColor="rgba(255,255,255,0)"/>
-                                            </linearGradient>
-                                        </defs>
-                                    </svg>
 
                                     {/* Enhanced glass morphism container */}
                                     <div className="group relative w-full h-full cursor-pointer backdrop-blur-sm"
@@ -906,7 +886,7 @@ export default function WomensDay20_10() {
                                 {/* Close button */}
                                 <button
                                     onClick={closeLightbox}
-                                    className={`absolute top-4 right-4 p-2 rounded-full ${theme.btn} text-white z-10
+                                    className={`absolute top-4 right-4 p-2 rounded-full ${theme.btn} text-gray z-10
                                               shadow-lg flex items-center justify-center transform transition-all duration-300
                                               hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50`}
                                     aria-label="Close"
